@@ -28,7 +28,7 @@ The core of the detection is in the [CSegmentation](https://github.com/gestom/MB
 The mapping method runs in a separate package. 
 These codes contain comments numbered in the same way as in Algorithm 3,4,5 of the article, so one can relate the blocks of actual cpp code to the code of the paper.  
 
-To quickly test the code, build the nodes using *catkin_make*, download one of the [rosbags](), then run the node using the *rosbag.launch*:
+To quickly test the code, build the nodes using *catkin_make*, download one of the [rosbags](https://drive.google.com/open?id=12JMtMRwAxuQDOIvuAB3Pw12v5sdFLBfq), then run the node using the *rosbag.launch*:
 
 ```UAV_NAME=uav2 roslaunch object_detection rosbag.launch```
 
