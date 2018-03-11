@@ -1,4 +1,4 @@
-# MBZIRC_2017_vision
+# MBZIRC 2017 CTU-UPENN-UoL team Vision Systems
 
 This repo contains the vision systems and relevant datasets used by the joint team of [Multirobot Systems Group](https://mrs.felk.cvut.cz) of the [Czech Technical University](https://www.cvut.cz) (CZ), [GRASP](https://grasp.upenn.edu) at [University of Pennsylvania](https://www.upenn.edu) (USA), and [Lincoln Centre for Autonomous Systems Research](http://lcas.lincoln.ac.uk) at [University of Lincoln](https://lincoln.ac.uk) (UK) during the Mohammed bin Zayed International Robotics Challenge [MBZIRC](https://Www.mbzirc.com).
 
@@ -44,4 +44,4 @@ This video is related to the Experiment described in Section 4.2 of the paper.
 
 ### Datasets
  
-The datasets collected during the contest are accessible on google drive folder [MBZIRC2017:  Treasure hunt vision datasets](https://github.com/gestom/MBZIRC_2017_vision/blob/master/treasure.jpg).
+The datasets collected during the contest are accessible on google drive folder [MBZIRC2017:  Treasure hunt vision datasets](https://drive.google.com/open?id=1tWgxXvr7SaWj2Dd4iZk2PaG5IJbCLQMM).
