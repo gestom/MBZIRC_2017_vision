@@ -317,7 +317,7 @@ void imageCallback(const sensor_msgs::ImageConstPtr& msg)
 						line(frame,cvPoint(imageCoords.at<float>(i,0)+sqrt(segments[i].size/2),imageCoords.at<float>(i,1)-sqrt(segments[i].size/2)),cvPoint(imageCoords.at<float>(i,0)+35,imageCoords.at<float>(i,1)-35),color,2,0);
 						line(frame,cvPoint(imageCoords.at<float>(i,0)+35,imageCoords.at<float>(i,1)-35),cvPoint(imageCoords.at<float>(i,0)+245,imageCoords.at<float>(i,1)-35),color,2,0);
 						sprintf(description,"Pos: %.2f %.2f %.2f",rx,ry,az);
-						sprintf(description,"Pos: %.2f %.2f %.2f",o.x,od,d);
+						//sprintf(description,"Pos: %.2f %.2f %.2f",o.x,od,d);
 						putText(frame,description,cvPoint(imageCoords.at<float>(i,0)+45,imageCoords.at<float>(i,1)-40), CV_FONT_HERSHEY_PLAIN, 1.1,Scalar(0,0,0),2);
 						sprintf(description,"Attrs: %.3f %.3f %i",segments[i].roundness,segments[i].circularity,segments[i].size);
 						putText(frame,description,cvPoint(imageCoords.at<float>(i,0)+45,imageCoords.at<float>(i,1)-20), CV_FONT_HERSHEY_PLAIN, 1.1,Scalar(0,0,0),2);
