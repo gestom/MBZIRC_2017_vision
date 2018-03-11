@@ -1,0 +1,37 @@
+<launch>
+
+  <arg name="uav_name" default="$(optenv UAV_NAME uav)"/>
+  <arg name="gui" default="false"/>
+  <arg name="debug" default="false"/>
+
+  <group ns="$(arg uav_name)">
+
+    <node name="mbzirc_detector" pkg="object_detection" type="mbzirc_detector" output="screen" launch-prefix="nice -n 19">
+
+      <rosparam file="$(find object_detection)/cfg/f550.yaml" />
+      <rosparam file="$(find object_detection)/cfg/$(arg uav_name).yaml" />
+
+      <param name="uav_name" type="string" value="$(arg uav_name)"/>
+      <param name="gui" type="bool" value="$(arg gui)"/>
+      <param name="debug" type="bool" value="$(arg debug)"/>
+
+      <!-- Subscribed topics -->
+      <remap from="~image_in" to="mobius/image_raw" />
+      <remap from="~camera_info" to="mobius/camera_info" />
+      <remap from="~uav_odometry" to="mbzirc_odom/new_odom" />
+      <remap from="~grasping_result" to="landing_object_controller/grasping_result" />
+
+      <!-- Published topics -->
+      <remap from="~objectRelative" to="~objectRelative" />
+      <remap from="~objectPositions" to="~objectPositions" />
+      <remap from="~objects" to="~objects" />
+      <remap from="~object_array" to="~object_array" />
+      <remap from="~processedimage" to="~processedimage" />
+      <remap from="~objectImages" to="~objectImages" />
+      <remap from="~histogram" to="~histogram" />
+
+    </node>
+
+  </group>
+
+</launch>

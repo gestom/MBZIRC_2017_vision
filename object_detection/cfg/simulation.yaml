@@ -1,0 +1,24 @@
+max_segment_size: 1000
+
+expected_min: 0
+
+expected_max: 10000000
+
+colormap_filename: "simulation.bin"
+
+camera_delay: 0.0
+
+camera_offset: 0.17
+
+camera_distCoeffs: [0, 0, 0, 0, 0, 0, 0, 0,]
+
+camera_intrinsic: [399.91, 0, 640.5, 0, 399.91, 360.5, 0, 0, 1]
+
+object_altitude: 0.2
+
+camera_yaw_offset: 0.0
+
+camera_psi_offset: 0.0
+
+camera_phi_offset: 0.0
+

@@ -1,0 +1,3 @@
+---
+bool success                                 # indicate successful run
+geometry_msgs/PoseWithCovariance[] poses     # object for pick up

@@ -1,0 +1,19 @@
+<launch>
+
+  <arg name="uav_name" default="$(optenv UAV_NAME uav)"/>
+  
+  <group ns="$(arg uav_name)">
+  
+    <node name="mbzirc_mapping" pkg="mbzirc_mapping" type="mbzirc_mapping" output="screen">
+      
+      <param name="~minObservations" value="2" />
+      <param name="~minDistance" value="2" />
+      <param name="~debug" value="true" />
+
+      <remap from="~objects" to="mbzirc_detector/objects"/>
+
+    </node>
+  
+  </group>
+
+</launch>

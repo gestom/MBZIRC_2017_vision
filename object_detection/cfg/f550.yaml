@@ -1,0 +1,24 @@
+max_segment_size: 1000
+
+expected_min: 500
+
+expected_max: 10000000
+
+colormap_filename: "mbzirc_contest_last.bin"
+
+camera_yaw_offset: 0.09
+
+camera_psi_offset: -0.080
+
+camera_phi_offset: -0.087
+
+camera_delay: 0.180
+
+camera_offset: 0.12
+
+camera_distCoeffs: [0.045539, -0.057822, 0.001451, -0.000487, 0.006539, 0.438100, -0.135970, 0.011170]
+
+camera_intrinsic: [606.215365, 0.000000, 632.285550, 0.000000, 679.696865, 373.770687, 0.000000, 0.000000, 1.000000]
+
+object_altitude: 0.2
+
