@@ -169,7 +169,7 @@ void saveColors()
 	}
 }
 
-/**** here is where the image processing happens ****/
+/**** HERE IS WHERE THE IMAGE PROCESSING HAPPENS ****/
 void imageCallback(const sensor_msgs::ImageConstPtr& msg)
 {
 	segmentation.statTotalSegments=segmentation.statGoodSizeSegments=segmentation.statCircularSegments=segmentation.statRoundSegments=segmentation.statFinalSegments=0;
@@ -223,9 +223,11 @@ void imageCallback(const sensor_msgs::ImageConstPtr& msg)
 	timer.reset();
 	timer.start();
 
-	//adaptive setting of the maximal segment size //TODO
+	/** SEGMENTATION ITSELF - ALGORITHMS 3 and 4 of the paper**/
 	segmentation.findSegment(&frame,&imageCoords,segments,minSegmentSize,maxSegmentSize);
 	altTransform = NULL;
+
+	//calculate the relative position of the object (without estimating the distance
 	if (imageCoords.rows!=0){
 		undistortPoints(imageCoords,metricCoords,intrinsic,distCoeffs);
 		altTransform = new CTransformation(intrinsic,distCoeffs,circleDiameter);
@@ -241,8 +243,11 @@ void imageCallback(const sensor_msgs::ImageConstPtr& msg)
 
 	detectedObjects = 0;
 
-	for(int i = 0; i < imageCoords.rows; i++) {
-
+	/** get all the detected objects from ALGORITHM 4**//
+	for(int i = 0; i < imageCoords.rows; i++)
+	{
+		/** verification of the object closeness to the ground plane **/
+		//calculate object position as if on the ground
 		char description[1000];
 		float rx = az*metricCoords.at<float>(i,0);
 		float ry = az*metricCoords.at<float>(i,1); 
@@ -250,10 +255,13 @@ void imageCallback(const sensor_msgs::ImageConstPtr& msg)
 		float expected = segments[i].size*d*d;
 		objectDescription.cornerX.clear();
 		objectDescription.cornerY.clear();
+
+		/**calculation of the object position, see section 3.5**/
 		STrackedObject o = altTransform->transform(segments[i]);
 		float od = sqrt(o.x*o.x+o.y*o.y+o.z*o.z); 
 		if (d == 0) d = 0.0001;
-			if (fabs(o.x/d-1.0) < visualDistanceToleranceRatio || fabs(od - d) < visualDistanceToleranceAbsolute){
+		/** test object distance from the ground plane, see end of 3.5 **/
+		if (fabs(o.x/d-1.0) < visualDistanceToleranceRatio || fabs(od - d) < visualDistanceToleranceAbsolute){
 					segmentation.statFinalSegments++; 
 
 					cout << imageNumber<<" object "<<rx<<" "<<ry<<" "<<az<<" "<< d <<" size "<< segments[i].size << " expected " <<expected<<" circularity "<<segments[i].circularity << " Trans: " << o.x << " " << o.y << " " << o.z << " Type: " << segmentation.classifySegment(segments[i]) <<endl;

@@ -25,6 +25,7 @@ void CTransformation::transformXY(float *ax,float *ay)
 	*ay = metric.at<float>(0,1);
 }
 
+/*** retrieving 3d position, section 3.5.3 - YANG's method ***/
 STrackedObject CTransformation::eigen(double data[])
 {
 	STrackedObject result;
@@ -45,7 +46,6 @@ STrackedObject CTransformation::eigen(double data[])
 
 	//detected pattern position
 	float z = trackedObjectDiameter/sqrt(-L2*L3)/2.0;
-	//z = sqrt(2*z);
 
 	float c0 =  sqrt((L2-L1)/(L2-L3));
 	float c0x = c0*V[2][V2];
@@ -65,61 +65,50 @@ STrackedObject CTransformation::eigen(double data[])
 	float n1 = +s1*c0y+s2*c1y;
 	float n2 = +s1*c0z+s2*c1z;
 
-	//n0 = -L3*c0x-L2*c1x;
-	//n1 = -L3*c0y-L2*c1y;
-	//n2 = -L3*c0z-L2*c1z;
-	
 	//rotate the vector accordingly
 	if (z2*z < 0){
 		 z2 = -z2;
 		 z1 = -z1;
 		 z0 = -z0;
-	//	 n0 = -n0;
-	//	 n1 = -n1;
-	//	 n2 = -n2;
 	}
 	result.x = z2*z;	
 	result.y = -z0*z;	
 	result.z = -z1*z;
-	result.pitch = n0;//cos(segment.m1/segment.m0)/M_PI*180.0;
-	result.roll = n1;//atan2(segment.v1,segment.v0)/M_PI*180.0;
-	result.yaw = n2;//segment.v1/segment.v0;
-	//result.roll = n2*z;	
-	//result.pitch = -n0*z;	
-	//result.yaw = -n1*z;
+	result.pitch = n0;
+	result.roll = n1;
+	result.yaw = n2;
 	return result;
 }
 
+/**** CALCULATING OBJECT POSITION IN 3D, see Section 3.5 ****/
 STrackedObject CTransformation::transform(SSegment segment)
 {
 	float x,y,x1,x2,y1,y2,major,minor,v0,v1;
 	STrackedObject result;
-	//Transform to the Canonical camera coordinates
+
+	/***Transform to the canonical camera coordinates, section 3.5.1***/
 	x = segment.x;
 	y = segment.y;
 	transformXY(&x,&y);
 	float m0 = segment.m0;
 	float m1 = segment.m1;
-	//if (segment.m0 > 0) m0 = sqrt(segment.m0);
-	//if (segment.m1 > 0) m1 = sqrt(segment.m1);
-	//major axis
-	//vertices in image coords
+	/**major axis**/
+	/*vertices in image coordinages*/
 	x1 = segment.x+segment.v0*m0*2;
 	x2 = segment.x-segment.v0*m0*2;
 	y1 = segment.y+segment.v1*m0*2;
 	y2 = segment.y-segment.v1*m0*2;
-	//printf("SSS: %.3f %.3f %.3f %.3f\n",segment.m0,segment.m1,segment.v0,segment.v1);
-	//vertices in canonical camera coords 
+
+	/*vertices in canonical camera coords*/
 	transformXY(&x1,&y1);
 	transformXY(&x2,&y2);
-//	printf("VVV: %.3f %.3f %.3f %.3f\n",x1,y1,x2,y2);
-	//semiaxes length 
+
+	/*semiaxes lengths*/
 	major = sqrt((x1-x2)*(x1-x2)+(y1-y2)*(y1-y2))/2.0;
 	v0 = (x2-x1)/major/2.0;
 	v1 = (y2-y1)/major/2.0;
-	//printf("AAA: %f %f\n",sqrt((x-x1)*(x-x1)+(y-y1)*(y-y1))-sqrt((x-x2)*(x-x2)+(y-y2)*(y-y2)),major);
 
-	//the minor axis 
+	/**minor axis**/
 	//vertices in image coords
 	x1 = segment.x+segment.v1*m1*2;
 	x2 = segment.x-segment.v1*m1*2;
@@ -130,9 +119,9 @@ STrackedObject CTransformation::transform(SSegment segment)
 	transformXY(&x2,&y2);
 	//minor axis length 
 	minor = sqrt((x1-x2)*(x1-x2)+(y1-y2)*(y1-y2))/2.0;
-	//printf("BBB: %f %f\n",sqrt((x-x1)*(x-x1)+(y-y1)*(y-y1))-sqrt((x-x2)*(x-x2)+(y-y2)*(y-y2)),minor);
 
-	//Construct the ellipse characteristic equation
+
+	/*** construct the ellipse characteristic equation, section 3.5.2 ***/
 	float a,b,c,d,e,f;
 	a = v0*v0/(major*major)+v1*v1/(minor*minor);
 	b = v0*v1*(1.0/(major*major)-1.0/(minor*minor));
@@ -141,7 +130,7 @@ STrackedObject CTransformation::transform(SSegment segment)
 	e = (-y*c-b*x);
 	f = (a*x*x+c*y*y+2*b*x*y-1.0);
 	
-	//transformation to global coordinates
+	/*** retrieving 3d position, section 3.5.3 ***/
 	double data[] ={a,b,d,b,c,e,d,e,f};
 
 	result = eigen(data);
