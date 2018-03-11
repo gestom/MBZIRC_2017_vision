@@ -1,9 +1,9 @@
 # MBZIRC_2017_vision
 
-This repo contains the vision systems and relevant datasets used by the joint team of [Multirobot Systems Group](mrs.felk.cvut.cz) of the [Czech Technical University](www.cvut.cz) (CZ), [GRASP](grasp.upenn.edu) at [University of Pennsylvania](upenn.edu) (USA), and [Lincoln Centre for Autonomous Systems Research](http://lcas.lincoln.ac.uk) at [University of Lincoln](lincoln.ac.uk) (UK) during the Mohammed bin Zayed International Robotics Challenge [MBZIRC](Www.mbzirc.com).
+This repo contains the vision systems and relevant datasets used by the joint team of [Multirobot Systems Group](https://mrs.felk.cvut.cz) of the [Czech Technical University](https://www.cvut.cz) (CZ), [GRASP](https://grasp.upenn.edu) at [University of Pennsylvania](https://upenn.edu) (USA), and [Lincoln Centre for Autonomous Systems Research](http://lcas.lincoln.ac.uk) at [University of Lincoln](https://lincoln.ac.uk) (UK) during the Mohammed bin Zayed International Robotics Challenge [MBZIRC](https://Www.mbzirc.com).
 at MBZIRC, which are described in a submission ROB-17-0117, which is currently in review.
 These vision system were used in the MBZIRC Challenge I (automated landing) and MBZIRC Challenge III (cooperative object collection).
-Both vision systems are available here as [ROS](http://www.ros.org) nodes with associated config and launch files.
+Both vision systems are available here as [ROS](https://www.ros.org) nodes with associated config and launch files.
 
 Note that the original system was running with Ubuntu version 14.04 and ROS indigo.
 For the sake of compatibility, the codes provided here were updated for compatibility with ROS kinetic and Ubuntu 16.04.
