@@ -1,9 +1,10 @@
-# MBZIRC_2017_vision
+# MBZIRC 2017 CTU-UPENN-UoL team Vision Systems
 
-This repo contains the vision systems and relevant datasets used by the joint team of [Multirobot Systems Group](mrs.felk.cvut.cz) of the [Czech Technical University](www.cvut.cz) (CZ), [GRASP](grasp.upenn.edu) at [University of Pennsylvania](upenn.edu) (USA), and [Lincoln Centre for Autonomous Systems Research](http://lcas.lincoln.ac.uk) at [University of Lincoln](lincoln.ac.uk) (UK) during the Mohammed bin Zayed International Robotics Challenge [MBZIRC](Www.mbzirc.com).
-at MBZIRC, which are described in a submission ROB-17-0117, which is currently in review.
+This repo contains the vision systems and relevant datasets used by the joint team of [Multirobot Systems Group](https://mrs.felk.cvut.cz) of the [Czech Technical University](https://www.cvut.cz) (CZ), [GRASP](https://grasp.upenn.edu) at [University of Pennsylvania](https://www.upenn.edu) (USA), and [Lincoln Centre for Autonomous Systems Research](http://lcas.lincoln.ac.uk) at [University of Lincoln](https://lincoln.ac.uk) (UK) during the Mohammed bin Zayed International Robotics Challenge [MBZIRC](https://Www.mbzirc.com).
+
 These vision system were used in the MBZIRC Challenge I (automated landing) and MBZIRC Challenge III (cooperative object collection).
-Both vision systems are available here as [ROS](http://www.ros.org) nodes with associated config and launch files.
+Both vision systems are available here as [ROS](https://www.ros.org) nodes with associated config and launch files.
+Their description is provided in a submission for Journal of Field Robotics, (ROB-17-0117), which is currently in review.
 
 Note that the original system was running with Ubuntu version 14.04 and ROS indigo.
 For the sake of compatibility, the codes provided here were updated for compatibility with ROS kinetic and Ubuntu 16.04.
@@ -14,11 +15,21 @@ To verify if the aforementioned changes affected the systems' performance, we re
 
 ### Code 
 
+The landing pattern detection is done by *cross_detector* node [cross_detector.cpp](https://github.com/gestom/MBZIRC_2017_vision/blob/master/cross_detector/src/cross_detector.cpp).
+The core of vision detection is in the [detector.cpp](https://github.com/gestom/MBZIRC_2017_vision/blob/master/cross_detector/src/detector.cpp).
+The codes contains comments with respect to Section 2 of the submitted paper.
+
+To see debug information you can uncomment some definition inside the detector.cpp file.
+
+To quickly test the code, build the node using *catkin_make*, download one of the [rosbags](https://drive.google.com/open?id=12JMtMRwAxuQDOIvuAB3Pw12v5sdFLBfq), then run the node using the *rosbag.launch*:
+
+```roslaunch cross_detector test.launch```
+
 [![Landing pattern detection example](https://github.com/gestom/MBZIRC_2017_vision/blob/master/landing.jpg)](https://youtu.be/rBRpL17b66s)
 
 ### Datasets
 
-The datasets collected during the contest are accessible on google drive folder [MBZIRC2017:  Treasure hunt vision datasets](https://github.com/gestom/MBZIRC_2017_vision/blob/master/treasure.jpg).
+The datasets collected during the contest are accessible on google drive folder [MBZIRC2017:  Landing datasets](https://drive.google.com/drive/folders/1Er9TcR6by7SloJWd5UItLLAvSvsILtbK?usp=sharing)
 
 ## Treasure hunt (colored object collection)
 
@@ -31,7 +42,7 @@ The core of the detection is in the [CSegmentation](https://github.com/gestom/MB
 The mapping method runs in a separate package. 
 These codes contain comments numbered in the same way as in Algorithm 3,4,5 of the article, so one can relate the blocks of actual cpp code to the code of the paper.  
 
-To quickly test the code, build the nodes using *catkin_make*, download one of the [rosbags](), then run the node using the *rosbag.launch*:
+To quickly test the code, build the nodes using *catkin_make*, download one of the [rosbags](https://drive.google.com/open?id=12JMtMRwAxuQDOIvuAB3Pw12v5sdFLBfq), then run the node using the *rosbag.launch*:
 
 ```UAV_NAME=uav2 roslaunch object_detection rosbag.launch```
 
@@ -47,4 +58,4 @@ This video is related to the Experiment described in Section 4.2 of the paper.
 
 ### Datasets
  
-The datasets collected during the contest are accessible on google drive folder [MBZIRC2017:  Treasure hunt vision datasets](https://github.com/gestom/MBZIRC_2017_vision/blob/master/treasure.jpg).
+The datasets collected during the contest are accessible on google drive folder [MBZIRC2017:  Treasure hunt vision datasets](https://drive.google.com/open?id=1tWgxXvr7SaWj2Dd4iZk2PaG5IJbCLQMM).
