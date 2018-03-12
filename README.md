@@ -14,7 +14,11 @@ To verify if the aforementioned changes affected the systems' performance, we re
 
 ### Code 
 
+[![Landing pattern detection example](https://github.com/gestom/MBZIRC_2017_vision/blob/master/landing.jpg)](https://youtu.be/rBRpL17b66s)
+
 ### Datasets
+
+The datasets collected during the contest are accessible on google drive folder [MBZIRC2017:  Treasure hunt vision datasets](https://github.com/gestom/MBZIRC_2017_vision/blob/master/treasure.jpg).
 
 ## Treasure hunt (colored object collection)
 
