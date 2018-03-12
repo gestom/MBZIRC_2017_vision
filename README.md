@@ -15,8 +15,8 @@ To verify if the aforementioned changes affected the systems' performance, we re
 
 ### Code 
 
-The landing pattern detection is done by *cross_detector* node [cross_detector.cpp](https://github.com/gestom/MBZIRC_2017_vision/cross_detector/src/cross_detector.cpp).
-The core of vision detection is in the [detector.cpp](https://github.com/gestom/MBZIRC_2017_vision/cross_detector/src/detector.cpp).
+The landing pattern detection is done by *cross_detector* node [cross_detector.cpp](https://github.com/gestom/MBZIRC_2017_vision/blob/master/cross_detector/src/cross_detector.cpp).
+The core of vision detection is in the [detector.cpp](https://github.com/gestom/MBZIRC_2017_vision/blob/master/cross_detector/src/detector.cpp).
 The codes contains comments with respect to Section 2 of the submitted paper.
 
 To see debug information you can uncomment some definition inside the detector.cpp file.
