@@ -27,6 +27,8 @@ To quickly test the code, build the node using *catkin_make*, download one of th
 
 ### Datasets
 
+The datasets collected during the contest are accessible on google drive folder [MBZIRC2017:  Landing datasets](https://drive.google.com/drive/folders/1Er9TcR6by7SloJWd5UItLLAvSvsILtbK?usp=sharing)
+
 ## Treasure hunt (colored object collection)
 
 This vision system is intended for the `Treasure hunt' scenario, where several UAVs search for small objects in the contest arena, pick them up and deliver to a specific location.
