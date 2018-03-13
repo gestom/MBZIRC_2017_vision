@@ -21,7 +21,7 @@ The codes contains comments with respect to Section 2 of the submitted paper.
 
 To see debug information you can uncomment some definition inside the detector.cpp file.
 
-To quickly test the code, build the node using *catkin_make*, download one of the [rosbags](https://drive.google.com/open?id=12JMtMRwAxuQDOIvuAB3Pw12v5sdFLBfq), then run the node using the *rosbag.launch*:
+To quickly test the code, build the node using *catkin_make*, download one of the [rosbags](https://drive.google.com/open?id=12JMtMRwAxuQDOIvuAB3Pw12v5sdFLBfq), then run the node using the *test.launch*:
 
 ```roslaunch cross_detector test.launch```
 
@@ -60,3 +60,9 @@ This video is related to the Experiment described in Section 4.2 of the paper.
 ### Datasets
  
 The datasets collected during the contest are accessible on google drive folder [MBZIRC2017:  Treasure hunt vision datasets](https://drive.google.com/open?id=1tWgxXvr7SaWj2Dd4iZk2PaG5IJbCLQMM).
+
+## Dependencies
+
+Please make sure that the following dependencies are installed:
+
+```sudo apt-get install ros-kinetic-image-transport-plugins```
