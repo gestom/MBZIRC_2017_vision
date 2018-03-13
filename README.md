@@ -25,6 +25,7 @@ To quickly test the code, build the node using *catkin_make*, download one of th
 
 ```roslaunch cross_detector test.launch```
 
+If everything goes well, you should see the pattern detection output similar to this video:
 [![Landing pattern detection example](https://github.com/gestom/MBZIRC_2017_vision/blob/master/landing.jpg)](https://youtu.be/rBRpL17b66s)
 
 ### Datasets
