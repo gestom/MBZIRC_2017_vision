@@ -4,7 +4,7 @@ This repo contains the vision systems and relevant datasets used by the joint te
 
 These vision system were used in the MBZIRC Challenge I (automated landing) and MBZIRC Challenge III (cooperative object collection).
 Both vision systems are available here as [ROS](https://www.ros.org) nodes with associated config and launch files.
-Their description is provided in Journal of Field Robotics in a paper by Stepan et al: [Vision techniques for on-board detection, following andmapping of moving targets](https://www.researchgate.net/profile/Tomas_Krajnik/publication/329370827_Vision_techniques_for_on-board_detection_following_and_mapping_of_moving_targets_STEPAN_et_al/links/5c93ef4f45851506d7222942/Vision-techniques-for-on-board-detection-following-and-mapping-of-moving-targets-STEPAN-et-al.pdf).
+Their description is provided in Journal of Field Robotics in a paper by Stepan et al: [Vision techniques for on-board detection, following and mapping of moving targets](https://www.researchgate.net/profile/Tomas_Krajnik/publication/329370827_Vision_techniques_for_on-board_detection_following_and_mapping_of_moving_targets_STEPAN_et_al/links/5c93ef4f45851506d7222942/Vision-techniques-for-on-board-detection-following-and-mapping-of-moving-targets-STEPAN-et-al.pdf).
 
 Note that the original system was running with Ubuntu version 14.04 and ROS indigo.
 For the sake of compatibility, the codes provided here were updated for compatibility with ROS kinetic and Ubuntu 16.04.
